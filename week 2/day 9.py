@@ -8,3 +8,21 @@
 
 # Notice that you may not slant the container.
 
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        count=0
+        right=len(height)-1
+        left=0
+        while right>left:
+            if(count < min(height[right],height[left])*(right-left)):
+                count=min(height[right],height[left])*(right-left)
+            if(height[right]==min(height[right],height[left])):
+                right-=1
+            elif(height[left]==min(height[right],height[left])):
+                left+=1
+
+        return count
